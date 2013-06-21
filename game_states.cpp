@@ -27,7 +27,7 @@ bool load_files()
 {
     
     background = load_image( "assets/background.png" );
-    font = TTF_OpenFont( "assets/lazy.ttf", 24 );
+    font = TTF_OpenFont( "assets/Terminus.ttf", 24 );
 
     player = load_image( "assets/player_rocket.bmp" );
     ball = load_image( "assets/enemy_ball.bmp" );
@@ -66,8 +66,15 @@ void main_game()
 	int start_time  = SDL_GetTicks();
 	int current_balls = 0;
 	int i = 0;
+
+	int fps_timer = 0;
+	int delay = 0;
+	int frames = 0;
+	int fps_calc_timer = SDL_GetTicks();
+
 	while (quit == false)
 	{
+		fps_timer = SDL_GetTicks();
 		if (SDL_GetTicks() - start_time > 1)
 		{
 			start_time = SDL_GetTicks();
@@ -138,7 +145,25 @@ void main_game()
 		}
 		apply_surface( player_position - PLAYER_WIDTH/2, SCREEN_HEIGHT - PLAYER_HEIGHT, player, screen );
 
+		std::stringstream caption;
+		caption << "FPS: " << (int)(frames*1000.0/(SDL_GetTicks() - fps_calc_timer+1));
+		message = TTF_RenderText_Solid( font, caption.str().c_str(), textColor );
+		if (SDL_GetTicks() - fps_calc_timer > 5000)
+		{
+			frames = 1;
+			fps_calc_timer = SDL_GetTicks();
+		}
+		apply_surface(10,10, message, screen);
+
 		SDL_Flip( screen );
+		frames++;
+
+		delay = SDL_GetTicks() - fps_timer;
+
+		if( delay < 1000 / FRAMES_PER_SECOND )
+        {
+            SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - delay );
+        }
 	}
 }
 

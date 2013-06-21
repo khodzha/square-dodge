@@ -3,6 +3,9 @@
 #include <SDL/SDL_ttf.h>
 #include <string>
 #include <time.h>
+#include <sstream>
+
+const int FRAMES_PER_SECOND = 200;
 
 bool intersects(SDL_Rect a, SDL_Rect b);
 
