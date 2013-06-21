@@ -2,6 +2,19 @@
 #include <stdio.h>
 #include "game_states.h"
 
+SDL_Surface *background = NULL;
+SDL_Surface *screen = NULL;
+SDL_Surface* message = NULL;
+SDL_Surface* player = NULL;
+SDL_Surface* ball = NULL;
+
+SDL_Event event;
+TTF_Font *font = NULL;
+
+SDL_Rect balls[MAX_BALLS];
+
+SDL_Color textColor = { 0, 0, 0 };
+
 int main(int argc, char* argv[])
 {
     bool quit = false;

@@ -26,11 +26,11 @@ bool init()
 bool load_files()
 {
     
-    background = load_image( "background.png" );
-    font = TTF_OpenFont( "lazy.ttf", 24 );
+    background = load_image( "assets/background.png" );
+    font = TTF_OpenFont( "assets/lazy.ttf", 24 );
 
-    player = load_image( "player_rocket.bmp" );
-    ball = load_image( "enemy_ball.bmp" );
+    player = load_image( "assets/player_rocket.bmp" );
+    ball = load_image( "assets/enemy_ball.bmp" );
 
     if( background == NULL )
     {

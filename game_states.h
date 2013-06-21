@@ -12,18 +12,18 @@ const int MAX_BALLS = 25;
 
 const int BALL_VELOCITY = 2;
 
-static SDL_Surface *background = NULL;
-static SDL_Surface *screen = NULL;
-static SDL_Surface* message = NULL;
-static SDL_Surface* player = NULL;
-static SDL_Surface* ball = NULL;
+extern SDL_Surface *background;
+extern SDL_Surface *screen;
+extern SDL_Surface* message;
+extern SDL_Surface* player;
+extern SDL_Surface* ball;
 
-static SDL_Event event;
-static TTF_Font *font = NULL;
+extern SDL_Event event;
+extern TTF_Font *font;
 
-static SDL_Rect balls[MAX_BALLS];
+extern SDL_Rect balls[MAX_BALLS];
 
-static SDL_Color textColor = { 0, 0, 0 };
+extern SDL_Color textColor;
 
 bool init();
 bool load_files();
